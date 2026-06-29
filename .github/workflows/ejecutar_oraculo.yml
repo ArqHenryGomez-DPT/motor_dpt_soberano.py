@@ -1,0 +1,20 @@
+name: Ejecutar Oraculo Soberano
+
+on: [push]
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v2
+      - name: Configurar Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Instalar librerías
+        run: pip install web3
+      - name: Ejecutar motor
+        env:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        run: python motor_dpt_soberano.py
