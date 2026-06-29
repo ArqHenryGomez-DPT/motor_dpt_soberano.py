@@ -9,6 +9,12 @@ jobs:
       - name: Checkout del código
         uses: actions/checkout@v3
 
+      - name: Diagnóstico de estructura
+        run: |
+          echo "--- Mapeo del Sistema de Archivos ---"
+          ls -R
+          echo "--- Fin del Mapeo ---"
+
       - name: Configurar Python
         uses: actions/setup-python@v4
         with:
@@ -20,4 +26,6 @@ jobs:
       - name: Ejecutar motor
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        run: python3 motor_dpt_soberano.py
+        run: |
+          echo "Intentando ejecución directa..."
+          python3 motor_dpt_soberano.py
