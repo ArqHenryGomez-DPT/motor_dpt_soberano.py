@@ -3,19 +3,12 @@ name: Ejecutar Oráculo Soberano
 on: [push]
 
 jobs:
-  ejecucion-directa:
+  ejecucion-robusta:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout del código
         uses: actions/checkout@v3
 
       - name: Ejecutar motor
-        env:
-          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         run: |
-          echo "--- Mapeo de Estructura ---"
-          ls -R
-          echo "--- Iniciando Ejecución ---"
-          # Entramos en la carpeta que contiene el archivo
-          cd motor_dpt_soberano.py
           python3 motor_dpt_soberano.py
