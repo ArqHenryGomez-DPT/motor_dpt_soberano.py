@@ -13,6 +13,9 @@ jobs:
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         run: |
-          echo "Listando archivos en la raíz:"
-          ls -F
+          echo "--- Mapeo de Estructura ---"
+          ls -R
+          echo "--- Iniciando Ejecución ---"
+          # Entramos en la carpeta que contiene el archivo
+          cd motor_dpt_soberano.py
           python3 motor_dpt_soberano.py
