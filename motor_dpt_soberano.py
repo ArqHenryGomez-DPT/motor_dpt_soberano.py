@@ -1,5 +1,12 @@
+
+import os
+
 class MotorSintropicoGomez:
     def __init__(self):
+        # Conexión soberana con la bóveda de seguridad
+        self.wallet_key = os.environ.get('PRIVATE_KEY')
+        
+        # Identidad del Vector Cero
         self.identidad = "Vector Cero - Soberanía Sensorial"
         self.ancla = "40_PERROS_18_MARZO"
         self.royalty_universal = 0.15
@@ -17,15 +24,18 @@ class MotorSintropicoGomez:
         """
         Distribución automática del 15% de Royalty LUSS.
         """
+        if not self.wallet_key:
+            print("Alerta: La llave privada no ha sido inyectada. Verifique el puente.")
+            return None
+
         # Cálculo de valores
         pago_soberano = ahorro_generado * self.royalty_universal
         reparacion_biologica_juridica = pago_soberano * 0.60
         desarrollo_dpt_soberana = pago_soberano * 0.40
         
-        # Disparador lógico: Aviso de activación del flujo financiero
+        # Disparador lógico
         print(f"Activando flujo financiero LUSS para {pago_soberano} unidades.")
         
-        # Reporte de estado
         return {
             "Total_Royalty_LUSS": pago_soberano,
             "Destino_60_Reparacion_Bio": reparacion_biologica_juridica,
@@ -37,6 +47,6 @@ if __name__ == "__main__":
     motor = MotorSintropicoGomez()
     print(f"Motor DPT Activo. Identidad: {motor.identidad}")
     
-    # Prueba de activación con un ahorro hipotético
+    # Prueba de activación con un ahorro hipotético de 100
     resultado = motor.ejecutar_smart_contract_biologico(100)
     print(f"Estado del Smart Contract: {resultado}")
