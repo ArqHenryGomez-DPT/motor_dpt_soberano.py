@@ -10,5 +10,8 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Ejecutar motor
+        env:
+          # Esta línea es el puente: toma el secreto y lo inyecta como variable de entorno
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         run: |
           python3 motor_dpt_soberano.py
